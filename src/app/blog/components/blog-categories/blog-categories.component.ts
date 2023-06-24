@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component } from "@angular/core";
 import { BlogCategories, BlogCategoryObject } from "../../models/blog.models";
 import { getBlogCategories } from "../../utils/blog.helper";
+import { CategoryService } from "./blog-category.service";
 
 
 @Component({
@@ -9,14 +10,13 @@ import { getBlogCategories } from "../../utils/blog.helper";
   styleUrls: ['./blog-categories.component.scss']
 })
 export class BlogCategoriesComponent {
-  @Output() setCategory = new EventEmitter<BlogCategories>();
-
+  constructor(private categoryService: CategoryService) { }
   categories: BlogCategoryObject[] = getBlogCategories();
   activeCategory!: BlogCategories;
 
   selectCategory(value: BlogCategories): void {
     this.activeCategory = (this.activeCategory === value ? undefined : value) as BlogCategories;
-    this.setCategory.next(value)
+    this.categoryService.updateCategory(this.activeCategory)
   }
 
 }
