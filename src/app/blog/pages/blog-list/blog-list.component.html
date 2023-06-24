@@ -1,7 +1,16 @@
-<div *ngIf="blogs?.length">
-  <button class="create-blog-button px-4" (click)="openAddPost()">Add post</button>
-  <ng-container *ngFor="let blog of blogs;">
-    <app-blog-post [blog]="blog" (editRequest)="editPost($event)" (deleteRequest)="deletePost($event)">
-    </app-blog-post>
-  </ng-container>
+<div class="main">
+  <section class="add-blog">
+    <button class="add-blog__btn" (click)="openAddPost()">Add post</button>
+  </section>
+  <section class="blog-list">
+    <aside>
+      <app-blog-categories></app-blog-categories>
+    </aside>
+    <section>
+      <ng-container *ngFor="let blog of blogs;">
+        <app-blog-post [blog]="blog" (editRequest)="editPost($event)" (deleteRequest)="deletePost($event)">
+        </app-blog-post>
+      </ng-container>
+    </section>
+  </section>
 </div>

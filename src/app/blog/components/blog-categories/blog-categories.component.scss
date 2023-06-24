@@ -1,7 +1,10 @@
 .categories {
+  background-color: white;
+  height: 100%;
   min-width: 150px;
   flex-direction: column;
   justify-content: center;
+  margin-right: 16px;
 
   .is-active {
     color: blue;
@@ -20,14 +23,17 @@
   .categories {
     display: flex;
     justify-content: center;
+    margin-bottom: 12px;
+    margin-right: 0px;
 
     &--wrapper {
       display: flex;
       flex-direction: row;
+      padding: 12px 12px;
     }
 
     &--item {
-      margin-right: 8px;
+      margin-right: 16px;
     }
 
     &--title {

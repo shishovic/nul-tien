@@ -1,14 +1,3 @@
-<section class="d-flex justify-content-end my-2">
-  <button class="create-blog-button px-4" (click)="openAddPost()">Add post</button>
-</section>
-<section class="blog-list">
-  <aside>
-    <app-blog-categories (setCategory)="setBlogCategory($event)"></app-blog-categories>
-  </aside>
-  <section>
-    <div *ngFor="let blog of blogs">
-      <app-blog-post [blog]="blog" (editRequest)="editPost($event)"
-        (deleteRequest)="deletePost($event)"></app-blog-post>
-    </div>
-  </section>
+<section>
+  <app-blog-list></app-blog-list>
 </section>

@@ -1,5 +1,24 @@
-.create-blog-button {
-  background-color: black;
-  color: white;
-  font-size: 12px;
+.add-blog {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  &__btn {
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    padding: 0px 24px;
+    margin: 12px 0px;
+  }
+}
+
+.blog-list {
+  flex-direction: row;
+  display: flex;
+}
+
+@media (max-width: 991.98px) {
+  .blog-list {
+    flex-direction: column;
+  }
 }
