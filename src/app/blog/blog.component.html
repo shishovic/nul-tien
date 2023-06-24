@@ -1,1 +1,9 @@
-<p>Blog component</p>
+<div class="container">
+  <h4>Welcome to my blog</h4>
+  <div class="d-flex justify-content-end">
+    <button class="create-blog__btn">Add post</button>
+  </div>
+  <div *ngFor="let blog of blogs">
+    <app-blog-post [blog]="blog"></app-blog-post>
+  </div>
+</div>
