@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
 import { BsModalRef } from "ngx-bootstrap/modal";
 import { BlogFormControls, BlogPost } from "../../models/blog.models";
 
@@ -13,9 +13,9 @@ export class AddBlogPostComponent implements OnInit {
   @Input() blog!: BlogPost;
   @Input() submitAction!: (data: BlogPost) => void;
 
-  blogForm: FormGroup = new FormGroup({
-    title: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required)
+  blogForm: UntypedFormGroup = new UntypedFormGroup({
+    title: new UntypedFormControl('', Validators.required),
+    description: new UntypedFormControl('', Validators.required)
   })
 
   constructor(private bsModalRef: BsModalRef) { }
@@ -35,15 +35,15 @@ export class AddBlogPostComponent implements OnInit {
   }
 
   get headingTitle(): string {
-    return `${!!this.blog ? 'Edit' : 'Add'} blog post`
+    return `${this.blog ? 'Edit' : 'Add'} blog post`
   }
 
-  get titleControl(): FormControl {
-    return this.blogForm.controls[BlogFormControls.TITLE] as FormControl;
+  get titleControl(): UntypedFormControl {
+    return this.blogForm.get(BlogFormControls.TITLE) as UntypedFormControl;
   }
 
-  get textControl(): FormControl {
-    return this.blogForm.controls[BlogFormControls.DESCRIPTION] as FormControl;
+  get textControl(): UntypedFormControl {
+    return this.blogForm.get(BlogFormControls.DESCRIPTION) as UntypedFormControl;
   }
 
   submit(): void {

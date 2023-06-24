@@ -1,3 +1,4 @@
+
 export interface ImageSize<T> {
   width: T;
   height: T;

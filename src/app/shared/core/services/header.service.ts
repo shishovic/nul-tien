@@ -3,13 +3,13 @@ import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable()
 export class HeaderService {
-  private searchSubject$: BehaviorSubject<any> = new BehaviorSubject(null);
+  private searchSubject$: BehaviorSubject<string> = new BehaviorSubject('');
 
-  public updateSearchSubject(val: any): void {
+  public updateSearchSubject(val: string): void {
     this.searchSubject$.next(val);
   }
 
-  public getSearchObservable(): Observable<any> {
+  public getSearchObservable(): Observable<string> {
     return this.searchSubject$.asObservable();
   }
 }

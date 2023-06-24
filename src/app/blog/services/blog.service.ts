@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { ImageSizes } from "src/app/shared/core/models/core.models";
+import { Identifier, ImageSizes } from "src/app/shared/core/models/core.models";
 import { BlogCategories, BlogPost } from "../models/blog.models";
 const MOCK_BLOGS: BlogPost[] = [
   {
@@ -97,29 +97,24 @@ const MOCK_BLOGS: BlogPost[] = [
 
 @Injectable()
 export class BlogService {
+
   blogs: BlogPost[] = [
     ...MOCK_BLOGS,
     ...MOCK_BLOGS,
     ...MOCK_BLOGS,
   ]
 
-  constructor() { }
+  getAllBlogs(category?: BlogCategories): Observable<BlogPost[]> {
+    if (!category) return of(this.blogs);
 
-  getAllBlogs(category?: BlogCategories | null): Observable<BlogPost[]> {
-    if (category) {
-      return of(this.blogs.filter((item) => item.category === category))
-    } else {
-      return of(this.blogs)
-    }
+    return of(this.blogs.filter(({ category: cat }: BlogPost) => cat === category))
   }
 
   getBlogsByCategory(category: BlogCategories): Observable<BlogPost[]> {
-    return of(this.blogs.filter((item: BlogPost) => item.category === category))
+    return of(this.blogs.filter(({ category: cat }: BlogPost) => cat === category))
   }
 
   updateBlog(blog: BlogPost): Observable<BlogPost> {
-    let blogToUpdate = this.blogs.find((item) => item.id === blog.id);
-    blogToUpdate = { ...blogToUpdate, ...blog }
     this.blogs = this.blogs.map((item) => ({
       ...item,
       title: item.id === blog.id ? blog.title : item.title,
@@ -128,7 +123,7 @@ export class BlogService {
     return of(blog)
   }
 
-  deleteBlog(id: string | number): Observable<BlogPost[]> {
+  deleteBlog(id: Identifier): Observable<BlogPost[]> {
     this.blogs = [... this.blogs].filter((item) => item.id !== id);
     return of(this.blogs)
   }
