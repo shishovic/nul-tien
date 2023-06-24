@@ -7,3 +7,8 @@ export const getBlogCategories = (): BlogCategoryObject[] => {
     { value: BlogCategories.SCIENCE, label: 'Science' },
   ] as BlogCategoryObject[];
 }
+
+export const searchFilters = <T>(originalArray: T[], search: string): T[] => {
+  if (!search?.length) return [...originalArray];
+  return [...originalArray].filter((item: T) => (item as T & { title: string }).title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
+}
