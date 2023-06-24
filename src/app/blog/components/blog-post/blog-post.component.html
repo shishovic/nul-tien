@@ -5,14 +5,14 @@
         <app-image *ngIf="blog.thumbnail" [image]="blog.thumbnail"></app-image>
       </div>
       <div class="blog--header__title align-self-start">
-        <p class="font-weight-bold mb-1"><strong>{{blog.title}}M</strong></p>
+        <p class="font-weight-bold mb-1"><strong>{{blog.title}}</strong></p>
         <p class="blog--header__subtitle">Posted date: {{blog.dateCreated | date: 'short'}} by
           {{blog.createdBy}}</p>
       </div>
     </div>
     <div class="blog--header__actions">
-      <button class="mx-2 px-4 blog--header__btn">Edit</button>
-      <button class="mx-2 px-4 blog--header__btn">Delete</button>
+      <button class="mx-2 px-4 blog--header__btn" (click)="editPost(blog)">Edit</button>
+      <button class="mx-2 px-4 blog--header__btn" (click)="deletePost(blog)">Delete</button>
     </div>
   </div>
   <div class="blog--body mb-1">

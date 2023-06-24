@@ -1,9 +1,9 @@
 <div class="container">
   <h4>Welcome to my blog</h4>
   <div class="d-flex justify-content-end">
-    <button class="create-blog__btn">Add post</button>
+    <button class="create-blog__btn" (click)="openAddPost()">Add post</button>
   </div>
   <div *ngFor="let blog of blogs">
-    <app-blog-post [blog]="blog"></app-blog-post>
+    <app-blog-post [blog]="blog" (editRequest)="editPost($event)" (deleteRequest)="deletePost($event)"></app-blog-post>
   </div>
 </div>

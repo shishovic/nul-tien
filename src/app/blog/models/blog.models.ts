@@ -1,6 +1,5 @@
 import { ImageSizes } from "src/app/shared/core/models/core.models";
 
-
 export enum BlogCategories {
   GENERAL = 'general',
   SCIENCE = 'science',
@@ -21,4 +20,9 @@ export interface BlogPost {
   createdBy: string | number;
   images?: BlogImage[];
   thumbnail?: BlogImage
+}
+
+export enum BlogFormControls {
+  TITLE = 'title',
+  DESCRIPTION = 'description'
 }

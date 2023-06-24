@@ -14,7 +14,7 @@ export class ImageComponent {
   _image!: BlogImage;
 
   @Input() set image(img: BlogImage) {
-    if (!img || !img.src || !img.src.length) {
+    if (!img?.src?.length) {
       this._image = DEFAULT_IMAGE;
     } else {
       this._image = img;

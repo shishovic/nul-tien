@@ -9,3 +9,5 @@ export enum ImageSizes {
 }
 
 export type Image = ImageSize<80> | ImageSize<100>
+
+export type Identifier = string | number;
