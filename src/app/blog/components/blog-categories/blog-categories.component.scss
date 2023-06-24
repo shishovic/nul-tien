@@ -4,7 +4,15 @@
   justify-content: center;
 
   .is-active {
-    color: red;
+    color: blue;
+    text-decoration: underline;
+  }
+
+  &--item {
+    &__link {
+      font-size: 14px;
+      text-decoration: none;
+    }
   }
 }
 

@@ -21,10 +21,17 @@ export class AddBlogPostComponent implements OnInit {
   constructor(private bsModalRef: BsModalRef) { }
 
   ngOnInit(): void {
+    if (!this.blog) return;
+
     this.blogForm.patchValue({
       title: this.blog.title,
       description: this.blog.description,
     })
+  }
+
+  get formValid(): boolean {
+    const { touched, dirty, valid } = this.blogForm;
+    return (touched || dirty) && !valid;
   }
 
   get headingTitle(): string {

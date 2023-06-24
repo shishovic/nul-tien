@@ -3,12 +3,11 @@
     <p class="blog--header__title pl-2 mb-0">{{headingTitle}}</p>
   </div>
   <div class="blog--body px-5 py-4 my-2 pb-4 mx-2">
-    <form [formGroup]="blogForm" novalidate
-      [ngClass]="{'was-validated': (blogForm.touched || blogForm.dirty) && !blogForm.valid }">
+    <form [formGroup]="blogForm" novalidate [ngClass]="{'was-validated': this.formValid }">
       <div class="form-group row mb-2">
         <label class="col-1 col-form-label col-form-label-sm flex px-0 pt-0" for="title">Title</label>
         <div class="col-11">
-          <input type="text" [formControl]="titleControl" class="form-control form-control-sm" id="title"
+          <input type="text" class="form-control form-control-sm" id="title" [formControl]="titleControl"
             placeholder="Title of the post" required />
         </div>
       </div>

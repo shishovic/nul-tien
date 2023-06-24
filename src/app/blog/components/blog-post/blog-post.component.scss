@@ -1,6 +1,4 @@
 .blog {
-  // background-color: lightgray;
-
   &--header {
     flex-direction: row;
     display: flex;
@@ -35,23 +33,10 @@
     }
   }
 
-
   &--footer {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
-}
-
-.blog {
-  background-color: white;
-}
-
-.blog:nth-child(even) {
-  background-color: white;
-}
-
-.blog:nth-child(odd) {
-  background-color: lightgray;
 }

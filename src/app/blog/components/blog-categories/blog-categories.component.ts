@@ -9,15 +9,13 @@ import { getBlogCategories } from "../../utils/blog.helper";
   styleUrls: ['./blog-categories.component.scss']
 })
 export class BlogCategoriesComponent {
+  @Output() setCategory = new EventEmitter<BlogCategories>();
 
-  @Output() setCategory = new EventEmitter<BlogCategories | null>();
   categories: BlogCategoryObject[] = getBlogCategories();
+  activeCategory!: BlogCategories;
 
-  activeCategory!: BlogCategories | null;
-
-  selectCategory(value: BlogCategories | null): void {
-    if (value === this.activeCategory) value = null;
-    this.activeCategory = value;
+  selectCategory(value: BlogCategories): void {
+    this.activeCategory = (this.activeCategory === value ? undefined : value) as BlogCategories;
     this.setCategory.next(value)
   }
 

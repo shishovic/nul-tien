@@ -21,7 +21,7 @@ export class BlogPostComponent {
     this.editRequest.next(data);
   }
 
-  deletePost(data: BlogPost): void {
-    this.deleteRequest.next(data.id);
+  deletePost({ id }: BlogPost): void {
+    this.deleteRequest.next(id);
   }
 }
