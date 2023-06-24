@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
 import { AddBlogPostComponent } from './components/add-blog-post/add-blog-post.component';
+import { BlogCategoriesComponent } from './components/blog-categories/blog-categories.component';
 import { BlogPostComponent } from './components/blog-post/blog-post.component';
 import { BlogService } from './services/blog.service';
 
@@ -12,7 +13,8 @@ import { BlogService } from './services/blog.service';
   declarations: [
     BlogComponent,
     BlogPostComponent,
-    AddBlogPostComponent
+    AddBlogPostComponent,
+    BlogCategoriesComponent,
   ],
   imports: [
     BlogRoutingModule,

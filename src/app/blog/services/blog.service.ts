@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { ImageSizes } from "src/app/shared/core/models/core.models";
-import { DataService } from "src/app/shared/core/services/data.service";
 import { BlogCategories, BlogPost } from "../models/blog.models";
 const MOCK_BLOGS: BlogPost[] = [
   {
@@ -103,12 +102,15 @@ export class BlogService {
     ...MOCK_BLOGS,
     ...MOCK_BLOGS,
   ]
-  constructor(private dataService: DataService) {
-  }
 
+  constructor() { }
 
-  getAllBlogs(): Observable<BlogPost[]> {
-    return of(this.blogs)
+  getAllBlogs(category?: BlogCategories | null): Observable<BlogPost[]> {
+    if (category) {
+      return of(this.blogs.filter((item) => item.category === category))
+    } else {
+      return of(this.blogs)
+    }
   }
 
   getBlogsByCategory(category: BlogCategories): Observable<BlogPost[]> {
@@ -118,13 +120,11 @@ export class BlogService {
   updateBlog(blog: BlogPost): Observable<BlogPost> {
     let blogToUpdate = this.blogs.find((item) => item.id === blog.id);
     blogToUpdate = { ...blogToUpdate, ...blog }
-    this.blogs = this.blogs.map((item) => {
-      return {
-        ...item,
-        title: item.id === blog.id ? blog.title : item.title,
-        description: item.id === blog.id ? blog.description : item.description,
-      }
-    })
+    this.blogs = this.blogs.map((item) => ({
+      ...item,
+      title: item.id === blog.id ? blog.title : item.title,
+      description: item.id === blog.id ? blog.description : item.description,
+    }))
     return of(blog)
   }
 

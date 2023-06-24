@@ -1,5 +1,10 @@
 import { ImageSizes } from "src/app/shared/core/models/core.models";
 
+export interface BlogCategoryObject {
+  value: BlogCategories;
+  label: string;
+}
+
 export enum BlogCategories {
   GENERAL = 'general',
   SCIENCE = 'science',

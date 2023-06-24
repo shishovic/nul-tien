@@ -5,3 +5,14 @@
     font-size: 12px;
   }
 }
+
+.blog-list {
+  flex-direction: row;
+  display: flex;
+}
+
+@media (max-width: 991.98px) {
+  .blog-list {
+    flex-direction: column;
+  }
+}

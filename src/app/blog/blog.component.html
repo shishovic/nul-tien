@@ -1,9 +1,14 @@
-<div class="container">
-  <h4>Welcome to my blog</h4>
-  <div class="d-flex justify-content-end">
-    <button class="create-blog__btn" (click)="openAddPost()">Add post</button>
-  </div>
-  <div *ngFor="let blog of blogs">
-    <app-blog-post [blog]="blog" (editRequest)="editPost($event)" (deleteRequest)="deletePost($event)"></app-blog-post>
-  </div>
-</div>
+<section class="d-flex justify-content-end my-2">
+  <button class="create-blog__btn px-4" (click)="openAddPost()">Add post</button>
+</section>
+<section class="blog-list">
+  <aside>
+    <app-blog-categories (setCategory)="setBlogCategory($event)"></app-blog-categories>
+  </aside>
+  <section>
+    <div *ngFor="let blog of blogs">
+      <app-blog-post [blog]="blog" (editRequest)="editPost($event)"
+        (deleteRequest)="deletePost($event)"></app-blog-post>
+    </div>
+  </section>
+</section>
