@@ -1,108 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { Identifier, ImageSizes } from "src/app/shared/core/models/core.models";
+import { Identifier } from "src/app/shared/core/models/core.models";
 import { BlogCategories, BlogPost } from "../models/blog.models";
-const MOCK_BLOGS: BlogPost[] = [
-  {
-    id: 1,
-    category: BlogCategories.GENERAL,
-    title: 'My first blog 1',
-    description: 'some description, some descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome description',
-    dateCreated: new Date().toString(),
-    createdBy: 'shishovic',
-    thumbnail: { src: '', size: ImageSizes.SMALL },
-    images: [{ src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }]
-  },
-  {
-    id: 2,
-    category: BlogCategories.LIFESTYLE,
-    title: 'My first blog 2',
-    description: 'some description, some descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome description',
-    dateCreated: new Date().toString(),
-    createdBy: 'shishovic',
-    thumbnail: { src: '', size: ImageSizes.SMALL },
-    images: [{ src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }]
-  },
-  {
-    id: 3,
-    category: BlogCategories.SCIENCE,
-    title: 'My first blog 3',
-    description: 'some description, some descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome description',
-    dateCreated: new Date().toString(),
-    createdBy: 'shishovic',
-    thumbnail: { src: '', size: ImageSizes.SMALL },
-    images: [{ src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }]
-  },
-  {
-    id: 4,
-    category: BlogCategories.GENERAL,
-    title: 'My first blog 4',
-    description: 'some description, some descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome description',
-    dateCreated: new Date().toString(),
-    createdBy: 'shishovic',
-    thumbnail: { src: '', size: ImageSizes.SMALL },
-    images: [{ src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }]
-  },
-  {
-    id: 5,
-    category: BlogCategories.LIFESTYLE,
-    title: 'My first blog 5',
-    description: 'some description, some descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome description',
-    dateCreated: new Date().toString(),
-    createdBy: 'shishovic',
-    thumbnail: { src: '', size: ImageSizes.SMALL },
-    images: [{ src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }]
-  },
-  {
-    id: 6,
-    category: BlogCategories.SCIENCE,
-    title: 'My first blog 6',
-    description: 'some description, some descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome description',
-    dateCreated: new Date().toString(),
-    createdBy: 'shishovic',
-    thumbnail: { src: '', size: ImageSizes.SMALL },
-    images: [{ src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }]
-  },
-  {
-    id: 7,
-    category: BlogCategories.GENERAL,
-    title: 'My first blog 7',
-    description: 'some description, some descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome description',
-    dateCreated: new Date().toString(),
-    createdBy: 'shishovic',
-    thumbnail: { src: '', size: ImageSizes.SMALL },
-    images: [{ src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }]
-  },
-  {
-    id: 8,
-    category: BlogCategories.LIFESTYLE,
-    title: 'My first blog 2',
-    description: 'some description, some descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome description',
-    dateCreated: new Date().toString(),
-    createdBy: 'shishovic',
-    thumbnail: { src: '', size: ImageSizes.SMALL },
-    images: [{ src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }]
-  },
-  {
-    id: 9,
-    category: BlogCategories.SCIENCE,
-    title: 'My first blog 3',
-    description: 'some description, some descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome descriptionsome description',
-    dateCreated: new Date().toString(),
-    createdBy: 'shishovic',
-    thumbnail: { src: '', size: ImageSizes.SMALL },
-    images: [{ src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }, { src: '', size: ImageSizes.SMALL }]
-  }
-];
+import { mockBlogData } from "../utils/blog.helper";
 
 @Injectable()
 export class BlogService {
 
-  blogs: BlogPost[] = [
-    ...MOCK_BLOGS,
-    ...MOCK_BLOGS,
-    ...MOCK_BLOGS,
-  ]
+  blogs: BlogPost[] = mockBlogData();
 
   getAllBlogs(category?: BlogCategories): Observable<BlogPost[]> {
     if (!category) return of(this.blogs);

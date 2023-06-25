@@ -2,6 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
+/**
+ * originally inteded as a base class HTTP service;
+ *
+ * This is not in use because Test API is unavailable;
+ */
 @Injectable()
 export class DataService {
   constructor(

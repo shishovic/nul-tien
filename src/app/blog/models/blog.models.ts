@@ -7,8 +7,15 @@ export interface BlogCategoryObject {
 
 export enum BlogCategories {
   GENERAL = 'general',
+  LIFESTYLE = 'lifestyle',
   SCIENCE = 'science',
-  LIFESTYLE = 'lifestyle'
+  FOOD = 'food',
+  FASHION = 'fashion',
+  SPORTS = 'sports',
+  ENTERTAINMENT = 'entertainment',
+  BUSINESS = 'business',
+  HEALTH = 'health',
+  EDUCATION = 'education'
 }
 
 export interface BlogImage {
