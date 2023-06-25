@@ -1,9 +1,7 @@
 import { Component } from "@angular/core";
 import { BlogCategories, BlogCategoryObject } from "../../models/blog.models";
+import { CategoryService } from "../../services/blog-category.service";
 import { getBlogCategories } from "../../utils/blog.helper";
-import { CategoryService } from "./blog-category.service";
-
-
 @Component({
   selector: 'app-blog-categories',
   templateUrl: './blog-categories.component.html',

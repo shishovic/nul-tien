@@ -6,11 +6,22 @@
     <aside>
       <app-blog-categories></app-blog-categories>
     </aside>
-    <section>
-      <ng-container *ngFor="let blog of blogs;">
-        <app-blog-post [blog]="blog" (editRequest)="editPost($event)" (deleteRequest)="deletePost($event)">
-        </app-blog-post>
-      </ng-container>
-    </section>
+    <ng-container *ngIf="blogs.length; then blogList; else noData"></ng-container>
   </section>
 </div>
+
+<!-- Blog list template -->
+<ng-template #blogList>
+  <section>
+    <app-blog-post *ngFor="let blog of blogs;" [blog]="blog" (editRequest)="editPost($event)"
+      (deleteRequest)="deletePost($event)">
+    </app-blog-post>
+  </section>
+</ng-template>
+
+<!-- No data template -->
+<ng-template #noData>
+  <div class="no-data">
+    <h1>No available data</h1>
+  </div>
+</ng-template>

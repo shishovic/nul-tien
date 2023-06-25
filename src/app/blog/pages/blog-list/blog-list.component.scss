@@ -12,6 +12,15 @@
   }
 }
 
+.no-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+}
+
 .blog-list {
   flex-direction: row;
   display: flex;
@@ -20,5 +29,9 @@
 @media (max-width: 991.98px) {
   .blog-list {
     flex-direction: column;
+  }
+
+  .no-data {
+    min-height: 200px;
   }
 }

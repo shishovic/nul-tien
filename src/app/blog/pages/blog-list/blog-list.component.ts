@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Subscription, filter } from "rxjs";
+import { Subscription } from "rxjs";
 import { Identifier } from "src/app/shared/core/models/core.models";
 import { HeaderService } from "src/app/shared/core/services/header.service";
-import { CategoryService } from "../../components/blog-categories/blog-category.service";
 import { BlogCategories, BlogPost } from "../../models/blog.models";
+import { CategoryService } from "../../services/blog-category.service";
 import { BlogModalService } from "../../services/blog-modal.service";
 import { BlogService } from "../../services/blog.service";
 import { searchFilters } from "../../utils/blog.helper";
@@ -34,7 +34,6 @@ export class BlogListComponent implements OnInit, OnDestroy {
 
     this.categorySubscription = this.categoryService
       .getCategoryObservable()
-      .pipe(filter(Boolean))
       .subscribe((item) => this.getBlogs(item))
 
     this.searchSubscription = this.headerService

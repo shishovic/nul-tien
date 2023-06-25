@@ -7,12 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: BlogComponent,
-    children: [
-      {
-        path: '',
-        component: BlogListComponent
-      }
-    ]
+    children: [{
+      path: '',
+      component: BlogListComponent
+    }]
   },
 ];
 
