@@ -1,0 +1,44 @@
+.blog {
+  background-color: white;
+
+  &--header {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__left-section {
+      flex-direction: row;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    &__img {
+      margin-right: 6px;
+    }
+
+    &__subtitle {
+      font-size: 12px;
+    }
+
+    &__actions {
+      align-self: flex-start;
+      align-items: flex-end;
+      justify-content: flex-end;
+      flex-shrink: 0;
+    }
+
+    &__btn {
+      background-color: black;
+      color: white;
+      font-size: 12px;
+    }
+  }
+
+  &--footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}

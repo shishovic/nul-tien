@@ -1,0 +1,26 @@
+<div class="blog px-4 py-3 mb-3">
+  <div class="blog--header">
+    <div class="blog--header__left-section">
+      <div class="blog--header__img">
+        <app-image *ngIf="blog.thumbnail" [image]="blog.thumbnail"></app-image>
+      </div>
+      <div class="blog--header__title align-self-start">
+        <p class="font-weight-bold mb-1 fs-5"><strong>{{blog.title}}</strong></p>
+        <p class="blog--header__subtitle">Posted date: {{blog.dateCreated | date: 'short'}} by
+          {{blog.createdBy}}</p>
+      </div>
+    </div>
+    <div class="blog--header__actions">
+      <button class="mx-3 px-4 blog--header__btn" (click)="editPost(blog)">Edit</button>
+      <button class="px-4 blog--header__btn" (click)="deletePost(blog)">Delete</button>
+    </div>
+  </div>
+  <div class="blog--body mb-2">
+    <p class="font-weight-normal fs-6 lh-sm mt-2">{{blog.description}}</p>
+  </div>
+  <div class="blog--footer">
+    <div *ngFor="let image of blog?.images" class="mx-1">
+      <app-image [image]="image"></app-image>
+    </div>
+  </div>
+</div>

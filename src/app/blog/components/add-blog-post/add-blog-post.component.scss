@@ -1,0 +1,38 @@
+.blog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &--header {
+    background-color: lightgray;
+    border-bottom: 1px solid black;
+
+    &__title {
+      font-weight: bolder;
+      font-size: 12px;
+      padding-left: 6px;
+    }
+  }
+
+  &--body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    &__textarea {
+      min-height: 150px;
+    }
+  }
+
+  &--footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__btn {
+      background-color: black;
+      color: white;
+      font-size: 12px;
+    }
+  }
+}

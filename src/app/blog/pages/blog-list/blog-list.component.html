@@ -1,0 +1,27 @@
+<div class="main">
+  <section class="add-blog">
+    <button class="add-blog__btn" (click)="openAddPost()">Add post</button>
+  </section>
+  <section class="blog-list">
+    <aside>
+      <app-blog-categories></app-blog-categories>
+    </aside>
+    <ng-container *ngIf="blogs.length; then blogList; else noData"></ng-container>
+  </section>
+</div>
+
+<!-- Blog list template -->
+<ng-template #blogList>
+  <section>
+    <app-blog-post *ngFor="let blog of blogs;" [blog]="blog" (editRequest)="editPost($event)"
+      (deleteRequest)="deletePost($event)">
+    </app-blog-post>
+  </section>
+</ng-template>
+
+<!-- No data template -->
+<ng-template #noData>
+  <div class="no-data">
+    <h1>No available data</h1>
+  </div>
+</ng-template>
